@@ -1,11 +1,10 @@
 import java.time.LocalDateTime;
 
-// The data structure: a Deque (double-ended queue) made with a doubly linked list.
-// Items can be added at the front, and removed from the front or from the rear.
+// Here, we'll make it possible to add or remove data from both the beginning and the end
 public class FoodDeque implements FoodStorage {
 
-    // A node is one box of the list. It stores one food item
-    // and links to the next node and to the previous node.
+    // Each node is a slot in the list where each food item is stored, and these nodes 
+    // are connected to each other by the previous and next nodes
     private class Node {
         FoodItem data;
         Node next;
@@ -63,7 +62,7 @@ public class FoodDeque implements FoodStorage {
         return true;
     }
 
-    // Remove from the front. Time complexity: O(1)
+    // Remove from the front
     public FoodItem removeFront() {
         if (isEmpty()) {
             return null;
@@ -79,7 +78,7 @@ public class FoodDeque implements FoodStorage {
         return removed;
     }
 
-    // Remove from the rear (opposite side). Time complexity: O(1)
+    // Remove from the rear (opposite side
     public FoodItem removeRear() {
         if (isEmpty()) {
             return null;
@@ -95,7 +94,7 @@ public class FoodDeque implements FoodStorage {
         return removed;
     }
 
-    // Look at the top item. Time complexity: O(1)
+    // Look at the top item
     public FoodItem peek() {
         if (isEmpty()) {
             return null;
@@ -103,7 +102,7 @@ public class FoodDeque implements FoodStorage {
         return front.data;
     }
 
-    // Show all items from the front to the rear. Time complexity: O(n)
+    // Show all items from the front to the rear 
     public void display() {
         Node current = front;
         int position = 1;
@@ -114,7 +113,7 @@ public class FoodDeque implements FoodStorage {
         }
     }
 
-    // Search by name using recursion. Time complexity: O(n)
+    // Search by name using recursion
     public int search(String name) {
         return searchFrom(front, name, 1);
     }
